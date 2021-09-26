@@ -20,6 +20,16 @@
   visibility: hidden;
   background: white;
   height: 100%;
+  display: inline-block;
+  height: fit-content;
+
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto; 
 }
 
 .col {
@@ -45,8 +55,16 @@ body {
 	}
 }
 
+.list-group-item {
+  font-size: 22px;
+  text-align: center;
+  font-weight: 490;
+}
+
 #word {
-  font-size: 9vw;
+  font-size: 10em;
+  font-weight: 500;
+  position: relative;
   text-transform: uppercase;
   text-align: center;
 }

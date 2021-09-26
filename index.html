@@ -20,9 +20,21 @@
         <h2 class="h2" style="text-align: center;">SpElLinG BeE 🐝</h2>  
       </div>
       <div class="col">
-        <label for="disabledRange" class="form-label" id="playerLabel" style="font-size: 25px; font-weight: 500;">25</label>
+        <label for="disabledRange" class="form-label" id="playerLabel" style="font-size: 25px; font-weight: 500;">Number of players: 25</label>
         <input type="range" class="form-range" id="playerCount" min="1" max="50" onmousemove="playerVis(this.value)"
           onchange="playerVis(this.value)">
+      </div>
+      <div class="col">
+        <h5 class="h5"> The T's And C's </h5>
+        <hr>
+        <ul class="list-group">
+          <li class="list-group-item">Only press generate when the current player has their back turned away.</li>
+          <li class="list-group-item">Each Player Only Has 2 Dictionary Guesses!</li>
+          <li class="list-group-item">Be careful of swear words!</li>
+          <li class="list-group-item">Add your own rules ;)</li>
+          <li class="list-group-item">Have fun</li>
+        </ul>
+        
       </div>
       <div class="col">
         <button class="btn btn-primary" onclick="init()">Start Game</button>
@@ -32,9 +44,9 @@
   </div>
 
   <div class="container-fluid main">
-    <div class="container" style="padding-top: 100px">
+    <div class="container">
       <div class="row row-cols-1 align-items-center justify-content-center">
-        <div class="col">
+        <!-- <div class="col">
           <div class="dropdown" style="display: flex; justify-content: center;">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="difficultybtn"
               data-bs-toggle="dropdown" aria-expanded="false">
@@ -48,9 +60,9 @@
               <li><a class="dropdown-item" href="#" onclick="tjoh()">Tjoh</a></li>
             </ul>
           </div>
-        </div>
+        </div> -->
         <div class="col">
-          <p class="h1" id="word">GET READY & START</p>
+          <h1 class="display-1" id="word">GET READY TO START</h1>
         </div>
         <div class="col">
           <div class="row row-cols-1" id="hintbox">
@@ -60,7 +72,7 @@
         <div class="col">
           <div class="row justify-content-center">
             <div class="col" style="display: flex; justify-content: center;"><button class="btn btn-primary newword"
-                onclick="newword()">Generate</button></div>
+                onclick="cardczar()">Generate</button></div>
             <div class="col" style="display: flex; justify-content: center;"><button class="btn btn-primary hint"
                 onclick="definition()">Definition</button></div>
           </div>

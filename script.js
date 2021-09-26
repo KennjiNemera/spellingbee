@@ -1,5 +1,6 @@
 var playerCount;
-var difficulty = 'easy';
+var difficulty = -1;
+var word = 'test';
 
 function init() {
   let val = document.getElementById('playerCount').value;
@@ -11,7 +12,7 @@ function init() {
   let main = document.querySelector('.main');
   main.style.visibility = 'visible';
 
-  easy();
+  // easy();
 
   document.body.style.background = 'white';
 
@@ -19,36 +20,36 @@ function init() {
 }
 
 function easy() {
-  difficulty = 'easy';
+  difficulty = 0;
   let btn = document.getElementById('difficultybtn');
 
-  btn.innerHTML = 'easy';
+  btn.innerHTML = 'Easy';
 }
 
 function medium() {
-  difficulty = 'medium';
+  difficulty = 1;
   let btn = document.getElementById('difficultybtn');
 
-  btn.innerHTML = 'medium';
+  btn.innerHTML = 'Medium';
 }
 
 function hard() {
-  difficulty = 'hard';
+  difficulty = 2;
   let btn = document.getElementById('difficultybtn');
 
-  btn.innerHTML = 'hard';
+  btn.innerHTML = 'Hard';
 }
 
 function tjoh() {
-  difficulty = 'tjoh';
+  difficulty = 3;
   let btn = document.getElementById('difficultybtn');
 
-  btn.innerHTML = 'tjoh';
+  btn.innerHTML = 'Tjoh';
 }
 
 function playerVis(val) {
   let lbl = document.getElementById('playerLabel');
-  lbl.textContent = val;
+  lbl.textContent = 'Number of players: ' + val;
 }
 
 function displayPlayer() {
@@ -66,25 +67,57 @@ function addPlayer() {
   displayPlayer();
 }
 
-function newword() {
-  var request = new XMLHttpRequest();
-  request.open('GET', 'https://random-word-api.herokuapp.com/word?number=1', true);
+function cardczar() {
+  newword();
 
-  request.onload = function () {
-    var data = JSON.parse(this.response);
-
-    let word = document.getElementById('word');
-    word.textContent = data[0];
-
-    document.getElementById('points').innerHTML = 'Points Available: ' + data[0].length;
-  }
+  // while (!isValid(difficulty)) {
+  //   setTimeout(null, 4000);
+  //   newword();
+  // }
 
   document.getElementById('hintbox').innerHTML = "";
 
-  request.send();
+  let elem = document.getElementById('word');
+  elem.textContent = word;
+
+  document.getElementById('points').innerHTML = 'Points Available: ' + word.length;
 }
 
+function isValid(difficulty) {
+  let len = word.length;
+
+  console.log(word);
+
+  if (difficulty === 0) {
+    if (len < 5) return true;
+  } else if (difficulty === 1) {
+    if (len > 4 && len < 8) return true;
+  } else if (difficulty === 2) {
+    if (len > 7 && len < 12) return true;
+  } else {
+    if (len > 11) return true;
+  }
+
+  return false;
+}
+
+function newword() {
+  var request = new XMLHttpRequest();
+  request.open('GET', 'https://random-word-api.herokuapp.com/word?number=1', true);
+  request.send();
+  request.onload = function () {
+    var data = JSON.parse(this.response);
+    word = data[0];
+  }
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
 function definition() {
+  document.getElementById('hintbox').innerHTML = "";
   let cur = document.getElementById('word').textContent;
 
   var request = new XMLHttpRequest();
