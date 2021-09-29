@@ -4,7 +4,6 @@
   background: white;
   border-radius: 10px;
   display: inline-block;
-  width: fit-content;
   height: fit-content;
 
   position: absolute;
@@ -59,10 +58,11 @@ body {
   font-size: 22px;
   text-align: center;
   font-weight: 490;
+  padding-top: 5px;
 }
 
 #word {
-  font-size: 10em;
+  font-size: calc(30px + 8vw);
   font-weight: 500;
   position: relative;
   text-transform: uppercase;

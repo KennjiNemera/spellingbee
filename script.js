@@ -1,6 +1,6 @@
 var playerCount;
 var difficulty = -1;
-var word = 'test';
+var word = '';
 
 function init() {
   let val = document.getElementById('playerCount').value;
@@ -68,12 +68,10 @@ function addPlayer() {
 }
 
 function cardczar() {
-  newword();
 
-  // while (!isValid(difficulty)) {
-  //   setTimeout(null, 4000);
-  //   newword();
-  // }
+  console.log('prev: ' + word);
+  newword();
+  console.log('new: ' + word);
 
   document.getElementById('hintbox').innerHTML = "";
 
@@ -104,11 +102,17 @@ function isValid(difficulty) {
 function newword() {
   var request = new XMLHttpRequest();
   request.open('GET', 'https://random-word-api.herokuapp.com/word?number=1', true);
-  request.send();
   request.onload = function () {
     var data = JSON.parse(this.response);
-    word = data[0];
+
+    document.getElementById('hintbox').innerHTML = "";
+
+    let elem = document.getElementById('word');
+    elem.textContent = data[0];
+
+    document.getElementById('points').innerHTML = 'Points Available: ' + data[0].length;
   }
+  request.send();
 }
 
 function sleep(ms) {
