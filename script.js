@@ -60,6 +60,19 @@ function displayPlayer() {
 function removePlayer() {
   playerCount--;
   displayPlayer();
+  if (playerCount === 1) {
+    console.log('game over');
+    let modal = document.querySelector('.modal');
+    modal.style.visibility = 'visible';  
+    let main = document.querySelector('.main');
+    main.style.filter = 'brightness(0.3)';
+    document.body.style.background = '#111111';
+    main.style.background = '#111111';
+  }
+}
+
+function reset() {
+  location.reload();
 }
 
 function addPlayer() {

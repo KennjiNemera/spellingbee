@@ -15,6 +15,10 @@
   margin: auto; 
 }
 
+.modal {
+  visibility: hidden;
+}
+
 .main {
   visibility: hidden;
   background: white;
